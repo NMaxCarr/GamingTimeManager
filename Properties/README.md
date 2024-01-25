@@ -1,0 +1,16 @@
+[![GitHub](https://img.shields.io/github/license/NMaxCarr/NMaxCarr/GamingTimeManager?cacheSeconds=50000)](https://github.com/NMaxCarr/GamingTimeManager)
+
+# GamingTimeManager
+This [Playnite](https://playnite.link) extension adds feature to keep track of your gaming time.
+
+## Informations
+This simple extension keeps track of how much time your playing video games. 
+The time track works only with games lunched via Playnite because it uses the `onGameStarted` event trigger.
+
+## Settings
+Three settings currently are available:
+* Period of time you wish to keep track of your limit. Currently, **Daily** or **Weekly** basis are available.
+* Time limit in **minutes** for a given period previously set.
+* Activate notification; A Windows alarm will pop once limit is reached. *(Not tested with other OS)*
+
+In any case, a Playnite notification will be showed when a game is closed to inform you about total time played and total time available to play.

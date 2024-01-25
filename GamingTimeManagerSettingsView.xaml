@@ -5,18 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
-    <StackPanel Margin="20">
-        <StackPanel Orientation="Horizontal" Margin="5">
-            <Label Content="Session period : "/>
-            <ComboBox Width="120" ItemsSource="{Binding Settings.GamingSessionPeriods}" SelectedItem="{Binding Settings.GamingSessionTimePeriod}"/>
-        </StackPanel>
+    <StackPanel Margin="15">
         <StackPanel Orientation="Horizontal" Margin="5">
             <Label Content="Time limit (minutes) : "/>
-            <TextBox TextWrapping="Wrap" Text="{Binding Settings.GamingSessionTimeGoal}" PreviewTextInput="ValidationTextBox" Width="50" MaxLength="5"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Settings.GamingTimePeriodGoal}" PreviewTextInput="ValidationTextBox" Width="50" MaxLength="5"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="5">
-            <CheckBox Content="Notify when session time is over" IsChecked="{Binding Settings.SessionTimeOverNotification}"/>
+            <Label Content="Period: "/>
+            <ComboBox Width="120" ItemsSource="{Binding Settings.AvailableGamingSessionPeriods}" SelectedItem="{Binding Settings.GamingTimePeriod}"/>
         </StackPanel>
-
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <CheckBox Content="Warn me when time is over" IsChecked="{Binding Settings.NotifyOnTimeGoalReached}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

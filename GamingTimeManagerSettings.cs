@@ -11,30 +11,40 @@ namespace GamingTimeManager
 {
     public enum Period
     {
-        Daily,
-        Weekly
+        Daily = 1,
+        Weekly = 7,
     }
     public class GamingTimeManagerSettings : ObservableObject
     {
-        private Period gamingSessionTimePeriod = Period.Daily;
-        private uint gamingSessionTimeGoal = 3210;
-        private bool sessionTimeOverNotification = false;
-        private bool optionThatWontBeSaved = false;
+        private Period gamingTimePeriod = Period.Daily;
+        private double gamingTimePeriodGoal = 120;
+        private bool notifyOnTimeGoalReached = false;
 
-        public Period GamingSessionTimePeriod { get => gamingSessionTimePeriod; set => SetValue(ref gamingSessionTimePeriod, value); }
+        public Period GamingTimePeriod { get => gamingTimePeriod; set => SetValue(ref gamingTimePeriod, value); }
+        
+        public string GamingTimePeriodGoal { 
+            get => gamingTimePeriodGoal.ToString(); 
+            
+            set 
+            {
+                if (value == "" || value == null)
+                {
+                    SetValue(ref gamingTimePeriodGoal, 0);
+                }
+                else
+                {
+                    SetValue(ref gamingTimePeriodGoal, Convert.ToDouble(value));
+                }
+            } 
+        }
+
+        public bool NotifyOnTimeGoalReached { get => notifyOnTimeGoalReached; set => SetValue(ref notifyOnTimeGoalReached, value); }
 
         [DontSerialize]
-        public Period[] GamingSessionPeriods 
+        public Period[] AvailableGamingSessionPeriods
         {
             get { return (Period[])Enum.GetValues(typeof(Period)); }
         }
-        
-        public uint GamingSessionTimeGoal { get => gamingSessionTimeGoal; set => SetValue(ref gamingSessionTimeGoal, value); }
-
-        public bool SessionTimeOverNotification { get => sessionTimeOverNotification; set => SetValue(ref sessionTimeOverNotification, value); }
-
-        [DontSerialize]
-        public bool OptionThatWontBeSaved { get => optionThatWontBeSaved; set => SetValue(ref optionThatWontBeSaved, value); }
     }
 
     public class GamingTimeManagerSettingsViewModel : ObservableObject, ISettings
