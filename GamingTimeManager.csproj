@@ -58,7 +58,7 @@
     <None Include="extension.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Properties\README.md" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Localization\*.xaml">
