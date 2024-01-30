@@ -5,10 +5,13 @@ using Playnite.SDK.Events;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Resources;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,7 +50,7 @@ namespace GamingTimeManager
 
         private readonly int DataSavingTaskTick = 10000;
 
-        private bool timeOverNotificationFlag = false;
+        private bool TimeOverNotificationFlag { get; set; } = false;
 
         public GamingTimeManager(IPlayniteAPI api) : base(api)
         {
@@ -91,17 +94,24 @@ namespace GamingTimeManager
 
             Task.Run(async () =>
             {
+                System.Diagnostics.Debug.WriteLine("Start");
                 gamingSessionData.CurrentGameStartDate = DateTime.UtcNow;
                 initialSessionTimePlayed = gamingSessionData.PeriodTimePlayed;
 
                 while (!dataSavingTokenSource.IsCancellationRequested)
                 {
-                    if (IsPassedDate(gamingSessionData.PeriodDateEnd)) IncrementGamingTimePeriod();
+                    if(IsPassedDate(gamingSessionData.PeriodDateEnd))
+                    {
+                        IncrementGamingTimePeriod();
+                    }
+                    else
+                    {
+                        gamingSessionData.PeriodTimePlayed = CalculateGamingSessionTimespan(DateTime.UtcNow, gamingSessionData.CurrentGameStartDate) + initialSessionTimePlayed;
+                    }
 
-                    gamingSessionData.PeriodTimePlayed = CalculateGamingSessionTimespan(DateTime.UtcNow, gamingSessionData.CurrentGameStartDate) + initialSessionTimePlayed;
                     WriteGamingSessionTimeData(dataPath);
 
-                    if (IsMaxGamingTimeReached() && Convert.ToDouble(Settings.Settings.GamingTimePeriodGoal) > 0) DisplayTimeOverToasterNotification();
+                    if (IsMaxGamingTimeReached() && Settings.IsPluginEnabled()) DisplayTimeOverToasterNotification();
 
                     await Task.Delay(DataSavingTaskTick);
                 }
@@ -118,8 +128,10 @@ namespace GamingTimeManager
             {
                 logger.Error(e.Message);
             }
+            
+            TimeOverNotificationFlag = false;
 
-            NotifyGamingTimeSummary();
+            if(Settings.IsPluginEnabled()) NotifyGamingTimeSummary();
         }
 
         public override ISettings GetSettings(bool firstRunSettings)
@@ -158,30 +170,39 @@ namespace GamingTimeManager
 
         private void DisplayTimeOverToasterNotification()
         {
-            if (timeOverNotificationFlag == false && Settings.Settings.NotifyOnTimeGoalReached == true)
+            if (TimeOverNotificationFlag == false && Settings.Settings.NotifyOnTimeGoalReached == true)
             {
+                var toasterTitle = ResourceProvider.GetString("LOCGamingTimeManagerTimeOver");
+                var toasterMessage = ResourceProvider.GetString("LOCGamingTimeManagerMaxTimeAllowed");
+                var toasterAction = ResourceProvider.GetString("LOCDismiss");
+
                 new ToastContentBuilder()
-                    .AddText("Time's over")
-                    .AddText("You've reached your maximun gaming time goal set")
-                    .SetToastScenario(ToastScenario.Alarm)
-                    .AddAudio(new Uri("ms-appx:///Audio/NotificationSound.mp3"))
+                    .AddText(toasterTitle)
+                    .AddText(toasterMessage)
+                    .SetToastScenario(ToastScenario.Reminder)
+                    .AddButton(new ToastButton()
+                    .SetContent(toasterAction)
+                    .AddArgument("action", "dismiss"))
                     .Show();
 
-                timeOverNotificationFlag = true;
+                TimeOverNotificationFlag = true;
             }
         }
 
-        private bool IsPassedDate(DateTime start)
+        private bool IsPassedDate(DateTime date)
         {
-            return start > DateTime.UtcNow;
+            return date <= DateTime.UtcNow;
         }
 
         private void IncrementGamingTimePeriod()
         {
+            System.Diagnostics.Debug.WriteLine("Increment");
+
             gamingSessionData.PeriodDateStart = DateTime.UtcNow;
             gamingSessionData.PeriodDateEnd = gamingSessionData.PeriodDateStart.Add(GetTimespanFromPeriod(Settings.Settings.GamingTimePeriod));
             gamingSessionData.PeriodTimePlayed = TimeSpan.Zero;
             gamingSessionData.CurrentGameStartDate = gamingSessionData.PeriodDateStart;
+            initialSessionTimePlayed = TimeSpan.Zero;
         }
 
         private TimeSpan GetTimespanFromPeriod(Period period)
@@ -223,11 +244,12 @@ namespace GamingTimeManager
 
         private void NotifyGamingTimeSummary()
         {
-            string timePlayed = gamingSessionData.PeriodTimePlayed.ToString(@"dd\.hh\:mm\:ss");
+            string timePlayed = gamingSessionData.PeriodTimePlayed.ToString(@"hh\:mm\:ss");
 
-            string goal = TimeSpan.FromMinutes(Convert.ToDouble(Settings.Settings.GamingTimePeriodGoal)).ToString(@"dd\.hh\:mm\:ss");
+            string goal = TimeSpan.FromMinutes(Convert.ToDouble(Settings.Settings.GamingTimePeriodGoal)).ToString(@"hh\:mm\:ss");
 
-            string summaryText = $"You've played {timePlayed} out of your {goal} limit.";
+            string summaryText = string.Format(ResourceProvider.GetString("LOCGamingTimeManagerSummary"), timePlayed, goal);
+
             PlayniteApi.Notifications.Add("1", summaryText, NotificationType.Info);
         }
 

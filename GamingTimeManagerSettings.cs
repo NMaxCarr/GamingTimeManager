@@ -17,7 +17,7 @@ namespace GamingTimeManager
     public class GamingTimeManagerSettings : ObservableObject
     {
         private Period gamingTimePeriod = Period.Daily;
-        private double gamingTimePeriodGoal = 120;
+        private double gamingTimePeriodGoal = 0;
         private bool notifyOnTimeGoalReached = false;
 
         public Period GamingTimePeriod { get => gamingTimePeriod; set => SetValue(ref gamingTimePeriod, value); }
@@ -77,6 +77,11 @@ namespace GamingTimeManager
             {
                 Settings = new GamingTimeManagerSettings();
             }
+        }
+
+        public bool IsPluginEnabled()
+        {
+            return Convert.ToDouble(Settings.GamingTimePeriodGoal) > 0;
         }
 
         public void BeginEdit()

@@ -1,7 +1,10 @@
 ﻿Id: GamingTimeManager_8cb3c9f6-fe18-4f9f-ac4c-dfba4ef46a72
-Name: Generic Plugin
-Author: John Doe
+Name: Gaming Time Manager
+Author: NMaxCarr
 Version: 1.0
 Module: GamingTimeManager.dll
 Type: GenericPlugin
 Icon: icon.png
+Links:
+  - Name: Github
+    Url: https://github.com/NMaxCarr/GamingTimeManager

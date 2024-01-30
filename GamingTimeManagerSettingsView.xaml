@@ -7,15 +7,15 @@
              d:DesignHeight="400" d:DesignWidth="600">
     <StackPanel Margin="15">
         <StackPanel Orientation="Horizontal" Margin="5">
-            <Label Content="Time limit (minutes) : "/>
-            <TextBox TextWrapping="Wrap" Text="{Binding Settings.GamingTimePeriodGoal}" PreviewTextInput="ValidationTextBox" Width="50" MaxLength="5"/>
+            <Label Content="{DynamicResource LOCGamingTimeManagerTimeLimitMin}"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Settings.GamingTimePeriodGoal}" PreviewTextInput="ValidationTextBox" Width="50" MaxLength="5" Margin="3,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="5">
-            <Label Content="Period: "/>
-            <ComboBox Width="120" ItemsSource="{Binding Settings.AvailableGamingSessionPeriods}" SelectedItem="{Binding Settings.GamingTimePeriod}"/>
+            <Label Content="{DynamicResource LOCGamingTimeManagerPeriod}"/>
+            <ComboBox Width="120" ItemsSource="{Binding Settings.AvailableGamingSessionPeriods}" SelectedItem="{Binding Settings.GamingTimePeriod}" Margin="3,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="5">
-            <CheckBox Content="Warn me when time is over" IsChecked="{Binding Settings.NotifyOnTimeGoalReached}"/>
+            <CheckBox Content="{DynamicResource LOCGamingTimeManagerWarnTimeOver}" IsChecked="{Binding Settings.NotifyOnTimeGoalReached}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

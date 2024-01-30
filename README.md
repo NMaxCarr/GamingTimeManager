@@ -4,8 +4,10 @@
 This [Playnite](https://playnite.link) extension adds feature to keep track of your gaming time.
 
 ## Informations
-This simple extension keeps track of how much time your playing video games. 
-The time track works only with games lunched via Playnite because it uses the `onGameStarted` event trigger.
+This basic and simple extension keeps track of how much time your playing video games and can alert you if your limit set is reached.
+
+[!IMPORTANT]
+The time track works only when games are lunched via Playnite because it uses the `onGameStarted` event.
 
 ## Settings
 Three settings currently are available:
@@ -14,3 +16,9 @@ Three settings currently are available:
 * Activate notification; A Windows alarm will pop once limit is reached. *(Not tested with other OS)*
 
 In any case, a Playnite notification will be showed when a game is closed to inform you about total time played and total time available to play.
+
+## Localizations
+
+
+## Contribute
+Don't hesitate to contribute or suggest any of your ideas for this extension.
