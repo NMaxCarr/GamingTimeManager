@@ -1,4 +1,4 @@
-[![GitHub](https://img.shields.io/github/license/NMaxCarr/NMaxCarr/GamingTimeManager?cacheSeconds=50000)](https://github.com/NMaxCarr/GamingTimeManager)
+![GitHub License](https://img.shields.io/github/license/NMaxCarr/GamingTimeManager?cacheSeconds=5000&link=https%3A%2F%2Fgithub.com%2FNMaxCarr%2FGamingTimeManager)
 
 # GamingTimeManager
 This [Playnite](https://playnite.link) extension adds feature to keep track of your gaming time.
