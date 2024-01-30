@@ -17,7 +17,7 @@ Three settings currently are available:
 
 In any case, a Playnite notification will be showed when a game is closed to inform you about total time played and total time remaining to play.
 
-## Localizations
+## Translation
 Your help to translate the extension is greatly appreciated. Visit the [Crowdin](https://crowdin.com/project/gamingtimemanager) project page.
 
 ## Contribute
