@@ -3,17 +3,17 @@
 
     <!-- Settings -->
     
-    <sys:String x:Key="LOCGamingTimeManagerTimeLimitMin">Time limit (minutes) :</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerPeriod">Period :</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerWarnTimeOver">Warn me when time is over</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerTimeLimitMin">Limite de temps (minutes) :</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerPeriod">Période :</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerWarnTimeOver">M'avertir lorsque le temps est écoulé</sys:String>
 
     <!-- Alarm notification -->
 
-    <sys:String x:Key="LOCGamingTimeManagerTimeOver">Time over</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerMaxTimeAllowed">You've played your maximun gaming time allowed</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerTimeOver">Temps écoulé</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerMaxTimeAllowed">Vous avez joué votre temps de jeu maximal autorisé</sys:String>
 
     <!-- Summary notification -->
 
-    <sys:String x:Key="LOCGamingTimeManagerSummary">You've played {0} of your {1} limit.</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerSummary">Vous avez joué {0} de votre limite {1}.</sys:String>
 
 </ResourceDictionary>
