@@ -1,20 +1,19 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+ï»¿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Settings -->
     
     <sys:String x:Key="LOCGamingTimeManagerTimeLimitMin">Limite de temps (minutes) :</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerPeriod">Période :</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerWarnTimeOver">M'avertir lorsque le temps est terminé</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerPeriod">PÃ©riode :</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerWarnTimeOver">M'avertir lorsque le temps est Ã©coulÃ©</sys:String>
 
     <!-- Alarm notification -->
 
-    <sys:String x:Key="LOCGamingTimeManagerTimeOver">Temps écoulé</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerMaxTimeAllowed">Vous avez joué le maximum de votre temps de jeu autorisé</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerTimeOver">Temps Ã©coulÃ©</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerMaxTimeAllowed">Vous avez jouÃ© votre temps de jeu maximal autorisÃ©</sys:String>
 
     <!-- Summary notification -->
 
-    <sys:String x:Key="LOCGamingTimeManagerSummary">Vous avez joué {0} de votre limite de {1}.</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerSummary">Vous avez jouÃ© {0} de votre limite {1}.</sys:String>
 
 </ResourceDictionary>

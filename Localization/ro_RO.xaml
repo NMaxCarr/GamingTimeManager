@@ -1,9 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- Settings -->
-
+    
     <sys:String x:Key="LOCGamingTimeManagerTimeLimitMin">Time limit (minutes) :</sys:String>
     <sys:String x:Key="LOCGamingTimeManagerPeriod">Period :</sys:String>
     <sys:String x:Key="LOCGamingTimeManagerWarnTimeOver">Warn me when time is over</sys:String>
