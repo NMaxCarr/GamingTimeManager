@@ -11,7 +11,7 @@
     <!-- Alarm notification -->
 
     <sys:String x:Key="LOCGamingTimeManagerTimeOver">Time over</sys:String>
-    <sys:String x:Key="LOCGamingTimeManagerMaxTimeAllowed">You've played your maximun gaming time allowed</sys:String>
+    <sys:String x:Key="LOCGamingTimeManagerMaxTimeAllowed">You've played your maximum gaming time allowed</sys:String>
 
     <!-- Summary notification -->
 
