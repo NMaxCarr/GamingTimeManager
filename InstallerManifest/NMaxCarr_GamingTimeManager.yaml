@@ -9,6 +9,6 @@ Packages:
   - Version: 1.0.1
     RequiredApiVersion: 6.11.0
     ReleaseDate: 2024-02-07
-    PackageUrl: https://github.com/NMaxCarr/GamingTimeManager/releases/download/1.0.1/GamingTimeManager_8cb3c9f6-fe18-4f9f-ac4c-dfba4ef46a72_1_0.pext
+    PackageUrl: https://github.com/NMaxCarr/GamingTimeManager/releases/download/1.0.1/GamingTimeManager_8cb3c9f6-fe18-4f9f-ac4c-dfba4ef46a72_1_0_1.pext
     Changelog:
       - Fix english typo
